@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница не найдена - FaktumWiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-neutral-950 text-neutral-100">
+    <!-- Упрощенный Header -->
+    <header class="sticky top-0 z-30 backdrop-blur supports-[backdrop-filter]:bg-neutral-950/60 bg-neutral-950/80 border-b border-neutral-800">
+        <div class="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="h-9 w-9 rounded-xl bg-white/5 ring-1 ring-white/10 grid place-items-center">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 6h8M4 12h8M4 18h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M14 6h6l-3 6 3 6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <span class="font-semibold tracking-tight text-lg">FaktumWiki</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Контент страницы 404 -->
+    <main class="min-h-screen flex items-center justify-center px-4">
+        <div class="max-w-lg mx-auto text-center fade-in">
+            <div class="mb-8">
+                <div class="text-8xl font-bold text-white/10">404</div>
+                <h1 class="text-2xl font-semibold mt-4">Страница не найдена</h1>
+                <p class="mt-2 text-neutral-400">Похоже, эта ссылка некорректна или страница была перемещена.</p>
+            </div>
+            
+            <div class="mt-10">
+                <a href="https://faktumwiki.ru" class="inline-flex items-center px-5 py-3 rounded-2xl bg-white text-neutral-900 font-medium hover:bg-neutral-200 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                    </svg>
+                    Вернуться на главную
+                </a>
+            </div>
+            
+            <div class="mt-16 text-xs text-neutral-500">
+                <p>Если вы считаете, что это ошибка, напишите нам на почту <a href="mailto:support@faktumwiki.ru" class="text-neutral-300 hover:text-white underline">support@faktumwiki.ru</a></p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
